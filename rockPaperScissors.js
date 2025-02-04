@@ -1,4 +1,4 @@
-
+const WIN_THRESH = 5;
 
 function getComputerChoice(){
     let compChoice = Math.random();
@@ -20,6 +20,7 @@ function getHumanChoice(){
 }
 
 function playRound(humanChoice, compChoice){
+    console.log(humanChoice,compChoice);
     let result = "tie"
     if(humanChoice==compChoice){
         console.log("You both picked ", humanChoice, "! It's a draw!");
@@ -50,17 +51,34 @@ function playRound(humanChoice, compChoice){
         };
     }
 
-    if(result=="win"){
-        console.log("Good job! You won the round!", humanChoice, " beats ", compChoice, "!");
-    };
-    if(result=="loss"){
-        console.log("Oh no!! You lost the round!", compChoice, " beats ", humanChoice, "!");
-    };
-
+    updateScoreboard(result);
     return result; 
 }
+function checkForWinner(humanCount, compCount){
+    winAnnounce = document.querySelector("#announcement");
+    if(parseInt(humanCount)>=WIN_THRESH){        
+        winAnnounce.textContent = "Congrats! You beat the computer!"
+    }
+    else if(parseInt(compCount)>=WIN_THRESH){
+        winAnnounce.textContent = "Sorry! You lose!";
+    }
+    return null;
+}
 
-function playGame(){
+function updateScoreboard(result){
+    if(result=="win"){
+        humanCount = document.querySelector("#humScore");
+        humanCount.textContent = parseInt(humanCount.textContent)+1;
+        checkForWinner(humanCount.textContent,0);
+    }
+    else if(result=="loss"){
+        compCount = document.querySelector("#compScore");
+        compCount.textContent = parseInt(compCount.textContent)+1;
+        checkForWinner(0,compCount.textContent);
+    };
+};
+
+/*function playGame(){
     const gameCount = 5;
     let compWins = 0;
     let humanWins = 0;
@@ -85,6 +103,18 @@ function playGame(){
     }
 
     return null;
-}
+}*/
 
-playGame();
+let buttonGroup = document.querySelector('#rps-grouping');
+
+buttonGroup.addEventListener("click", (event) => { 
+    winAnnounce = document.querySelector("#announcement");
+    if(winAnnounce.textContent==""){
+        compChoice = getComputerChoice();
+        playRound(event.target.id,compChoice);
+    }
+    else{
+        winAnnounce.textContent = "Stop trying to play! IT'S OVER!"
+    };
+})
+//playGame();

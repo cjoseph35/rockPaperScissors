@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="text/javascript" src="rockPaperScissors.js"></script>
+    <script type="text/javascript" src="rockPaperScissors.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-    
+    <div id="rps-grouping">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <div id="scoreboard">
+        <div class="scorebox">
+            <h2>Human</h3>
+            <h4 id="humScore">0</h4>
+        </div>
+        <div class="scorebox">
+            <h2>Computer</h3>
+            <h4 id="compScore">0</h4>
+        </div>
+    </div>
+    <h1 id="announcement"></h1>
 </body>
 </html>

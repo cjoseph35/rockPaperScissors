@@ -1,0 +1,38 @@
+#rps-grouping{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;  
+    gap: 4rem;
+    padding: 0;
+}
+
+button{
+    width: 25%;
+    height: 100px;
+    background-color: darkslategray;
+    color: white;
+    font-size: 26px;
+}
+
+.scoreboard{
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    align-items: center;
+    gap: 4rem;
+    flex-direction: row;
+}
+
+.scorebox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#announcement{
+    display: flex;
+    justify-content: center;
+}
